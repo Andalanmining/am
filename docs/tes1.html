@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOP Digital - Verifikasi Resmi</title>
+    <style>
+      /* 1. RESET & BASE STYLE (Biar gak berantakan bawaan Word) */
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f4f7f6;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 850px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 40px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-top: 8px solid #28a745; /* Aksen Hijau */
+      }
+
+      /* 2. HEADER SOP */
+      .header-sop {
+        text-align: center;
+        border-bottom: 2px solid #eee;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+      }
+
+      .header-sop h1 {
+        margin: 0;
+        font-size: 24px;
+        color: #1a5928;
+        text-transform: uppercase;
+      }
+
+      /* 3. AREA KONTEN (Tempat Paste dari Word) */
+      .content-area {
+        min-height: 300px;
+        text-align: justify;
+      }
+
+      .content-area h2 {
+        color: #2c3e50;
+        border-left: 4px solid #28a745;
+        padding-left: 10px;
+        font-size: 18px;
+      }
+
+      /* 4. BAGIAN TANDA TANGAN (FOOTER) */
+      .signature-section {
+        margin-top: 50px;
+        width: 100%;
+        border-top: 1px dashed #ccc;
+        padding-top: 30px;
+      }
+
+      .qr-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-verify {
+        padding: 12px 24px;
+        background: #28a745;
+        color: white !important;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(40, 167, 69, 0.2);
+        transition: 0.3s;
+      }
+
+      .btn-verify:hover {
+        background: #218838;
+        transform: translateY(-2px);
+      }
+
+      .verify-badge {
+        color: #28a745;
+        font-size: 11px;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      @media print {
+        .btn-verify {
+          display: none;
+        } /* Sembunyikan tombol saat di-print */
+        body {
+          background: white;
+          padding: 0;
+        }
+        .container {
+          box-shadow: none;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header-sop">
+        <h1>Standard Operating Procedure</h1>
+        <p>Ref: AM/SOP/2025/001</p>
+      </div>
+
+      <div class="content-area">
+        <h2>1. TUJUAN</h2>
+        <p>
+          Memberikan pedoman keselamatan bagi seluruh karyawan saat bekerja di
+          area dinding atau tebing yang tinggi guna mencegah kecelakaan kerja.
+        </p>
+
+        <h2>2. PROSEDUR KERJA</h2>
+        <p>
+          Pastikan semua personil menggunakan Alat Pelindung Diri (APD) lengkap
+          sebelum memasuki area kerja. Lakukan pengecekan kestabilan dinding
+          tebing secara berkala...
+        </p>
+      </div>
+
+      <table class="signature-section">
+        <tr>
+          <td width="50%" style="vertical-align: bottom; height: 120px">
+            <p>Disetujui Oleh,</p>
+            <br /><br />
+            <strong>Yudha Kelana</strong><br />
+            <span>PJO AM</span>
+          </td>
+          <td width="50%" align="center">
+            <div class="qr-wrapper">
+              <a href="ttd.html?id=SOP-01" target="_blank" class="btn-verify">
+                VERIFIKASI DOKUMEN
+              </a>
+              <div class="qr-detail">
+                <span class="verify-badge">✓ VERIFIED DIGITAL</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
