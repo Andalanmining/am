@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verifikasi Dokumen Digital</title>
+    <style>
+      /* Style utama agar tampilan profesional & mobile-friendly */
+      body {
+        background-color: #f0f2f5;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+      }
+      .status-valid {
+        color: #28a745;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .data-box {
+        text-align: left;
+        margin-top: 20px;
+        border-top: 2px solid #f0f2f5;
+        padding-top: 20px;
+      }
+      .label {
+        color: #6c757d;
+        font-size: 0.8rem;
+        margin-bottom: 2px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .value {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 15px;
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+      .loading {
+        font-style: italic;
+        color: #888;
+      }
+      #status {
+        padding: 6px 12px;
+        border-radius: 6px;
+        display: inline-block;
+        font-size: 0.9rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="main-content">
+      <div id="loader" class="loading">Sedang memverifikasi data...</div>
+
+      <div id="result" style="display: none">
+        <div class="status-valid">✅ DOKUMEN TERVERIFIKASI</div>
+
+        <div class="data-box">
+          <div class="label">Nama Dokumen</div>
+          <div id="dokumen" class="value" style="color: #007bff"></div>
+
+          <div class="label">Penandatangan</div>
+          <div id="nama" class="value"></div>
+
+          <div class="label">Jabatan</div>
+          <div id="jabatan" class="value"></div>
+
+          <div style="display: flex; justify-content: space-between; gap: 10px">
+            <div>
+              <div class="label">Tanggal Berlaku</div>
+              <div id="mulai" class="value"></div>
+            </div>
+            <div style="text-align: right">
+              <div class="label">Version</div>
+              <div id="version" class="value"></div>
+            </div>
+          </div>
+
+          <div class="label">Keterangan</div>
+          <div id="lokasi" class="value"></div>
+
+          <div class="label">Status Keabsahan</div>
+          <div id="status"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 1. URL Web App dari Google Apps Script
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbzDd6DeWuwXQz2GQVUf58AJqFU0jnUX1cY3WmAI-VEANU8gQfW1tVOKDClYFp4PQOdy/exec";
+
+      // 2. Ambil ID dari URL browser (?id=SOP-01)
+      const urlParams = new URLSearchParams(window.location.search);
+      const idUnik = urlParams.get("id");
+
+      if (!idUnik) {
+        document.getElementById("main-content").innerHTML =
+          "<h2>❌ ID Tidak Ditemukan</h2><p>Pastikan QR Code di-scan dengan benar.</p>";
+      } else {
+        // 3. Ambil data dari Google Sheets
+        fetch(`${scriptURL}?id=${idUnik}`)
+          .then((response) => response.json())
+          .then((data) => {
+            // Sembunyikan loader
+            document.getElementById("loader").style.display = "none";
+
+            if (data.status === "success") {
+              // Tampilkan box hasil
+              document.getElementById("result").style.display = "block";
+
+              // Isi data ke elemen HTML
+              document.getElementById("dokumen").innerText = data.dokumen;
+              document.getElementById("nama").innerText = data.nama;
+              document.getElementById("jabatan").innerText = data.jabatan;
+              document.getElementById("mulai").innerText = data.mulai;
+              document.getElementById("version").innerText = data.version;
+              document.getElementById("lokasi").innerText = data.lokasi;
+
+              // 4. Logika Warna Status (Hijau jika Aktif, Merah jika lainnya)
+              const statusEl = document.getElementById("status");
+              statusEl.innerText = data.kondisi.toUpperCase();
+
+              if (data.kondisi.toLowerCase() === "aktif") {
+                statusEl.style.backgroundColor = "#d4edda"; // Background Hijau Muda
+                statusEl.style.color = "#155724"; // Teks Hijau Tua
+              } else {
+                statusEl.style.backgroundColor = "#f8d7da"; // Background Merah Muda
+                statusEl.style.color = "#721c24"; // Teks Merah Tua
+              }
+            } else {
+              // Jika ID tidak ada di Spreadsheet
+              document.getElementById("main-content").innerHTML =
+                "<h2>❌ Data Tidak Valid</h2><p>Dokumen tidak terdaftar di database.</p>";
+            }
+          })
+          .catch((error) => {
+            document.getElementById("loader").innerText =
+              "Gagal memuat data. Periksa koneksi.";
+            console.error("Error:", error);
+          });
+      }
+    </script>
+  </body>
+</html>

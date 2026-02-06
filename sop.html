@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Golden Rules</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <a href="index.html" class="nav-back">
+        <img src="images/am.png" alt="logo" class="logo-kecil" />
+        <div class="text-container">
+          <h1>PT. Andalan Mining</h1>
+          <p>Akses prosedur & informasi keselamatan (Offline)</p>
+        </div>
+      </a>
+    </header>
+    <div class="search-container">
+      <input
+        type="text"
+        id="sopSearch"
+        placeholder="🔍 Cari judul atau nomor SOP..."
+        onkeyup="filterSop()"
+      />
+    </div>
+    <main class="policy-container">
+      <h2>📂 DAFTAR SOP KESELAMATAN</h2>
+      <p>Silakan pilih kategori SOP di bawah ini:</p>
+
+      <h3 class="category-divider">📦 UMUM (All Employee)</h3>
+      <div class="sop-list">
+        <a href="docs/1.html" class="sop-item">
+          <span>SOP-01: Bekerja di Dekat Dinding/Tebing Tinggi</span>
+          <span class="icon">↗</span>
+        </a>
+        <a href="docs/SOP-02.pdf" target="_blank" class="sop-item">
+          <span>SOP-02: Bekerja di Dekat Air</span>
+          <span class="icon">↗</span>
+        </a>
+        <a href="docs/SOP-03.pdf" target="_blank" class="sop-item">
+          <span>SOP-03: Bekerja di Ketinggian</span>
+          <span class="icon">↗</span>
+        </a>
+      </div>
+
+      <h3 class="category-divider">🏗️ PROYEK</h3>
+      <div class="sop-list">
+        <a href="docs/SOP-21.pdf" target="_blank" class="sop-item">
+          <span>SOP-21: Pengoperasian Grader</span>
+          <span class="icon">↗</span>
+        </a>
+        <a href="docs/SOP-28.pdf" target="_blank" class="sop-item">
+          <span>SOP-28: Pengoperasian Dozer (D 85 ESS)</span>
+          <span class="icon">↗</span>
+        </a>
+        <a href="docs/SOP-29.pdf" target="_blank" class="sop-item">
+          <span>SOP-29: Pengoperasian Excavator</span>
+          <span class="icon">↗</span>
+        </a>
+      </div>
+
+      <h3 class="category-divider">⚙️ MEKANIK</h3>
+      <div class="sop-list">
+        <a href="docs/SOP-32.pdf" target="_blank" class="sop-item">
+          <span>SOP-32: Pengoperasian Mesin Las</span>
+          <span class="icon">↗</span>
+        </a>
+        <a href="docs/SOP-35.pdf" target="_blank" class="sop-item">
+          <span>SOP-35: Minor Maintenance</span>
+          <span class="icon">↗</span>
+        </a>
+      </div>
+      <h3 class="category-divider">⚒️FABRIKASI</h3>
+      <div class="sop-list">
+        <a href="docs/SOP-32.pdf" target="_blank" class="sop-item">
+          <span>SOP-32: penyambungan pipa HDPE</span>
+          <span class="icon">↗</span>
+        </a>
+        <a href="docs/SOP-35.pdf" target="_blank" class="sop-item">
+          <span>SOP-35: chain block</span>
+          <span class="icon">↗</span>
+        </a>
+      </div>
+      <h3 class="category-divider">🌀HDPE</h3>
+      <div class="sop-list">
+        <a href="docs/SOP-32.pdf" target="_blank" class="sop-item">
+          <span>SOP-32: penyambungan pipa HDPE</span>
+          <span class="icon">↗</span>
+        </a>
+        <a href="docs/SOP-35.pdf" target="_blank" class="sop-item">
+          <span>SOP-35: chain block</span>
+          <span class="icon">↗</span>
+        </a>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2025 Dibuat oleh Safety AM</p>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
